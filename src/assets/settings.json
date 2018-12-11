@@ -1,0 +1,7 @@
+{
+    "ApiUrls": {
+        "BaseUrl": "http://localhost:61302/api/",
+        "RegisterUrl": "Account/Register"
+    }
+    
+}

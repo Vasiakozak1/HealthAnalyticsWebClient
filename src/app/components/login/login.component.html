@@ -1,0 +1,32 @@
+<div class="login-container">
+    <div class="login-box">
+      <div class="header">
+          <span class="mat-title">Login</span>
+      </div>
+        <form [formGroup]="LoginForm" (submit)="login()">
+          <div class="inputs-group">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" placeholder="Enter email here">
+              <i matSuffix class="material-icons">email</i>
+              <mat-error *ngIf="LoginForm.controls['email'].errors">Email is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput formControlName="password" placeholder="Enter password here">
+              <i matSuffix class="material-icons">lock</i>
+              <mat-error *ngIf="LoginForm.controls['password'].errors">Password is required</mat-error>
+            </mat-form-field>
+            <a mat-button routerLink=".">Forgot password ?</a>
+          </div>
+          <div class="submit-group">
+            <button type="submit" mat-raised-button color="warn" [disabled]="LoginForm.invalid">Login</button>
+          </div>
+        </form>
+        <div class="footer">
+          <span class="mat-body-1">Do not have an account ?</span> 
+          <span class="mat-body-1">You can register here</span> 
+          <a mat-stroked-button routerLink="/register">Registration</a>
+        </div>
+      </div>
+</div>

@@ -1,3 +1,18 @@
-<!--The content below is only a placeholder and can be replaced.-->
-
-<router-outlet></router-outlet>
+<div class="app-container mat-typography">
+    <mat-toolbar color="accent">
+        <mat-toolbar-row>
+            <div class="left-navigation">
+                    <span>Application name</span>
+                    <a mat-button routerLink='/home'>Home</a>
+            </div>
+            <div class="right-navigation">
+                <a mat-button routerLink='/login'>Login</a>
+            </div>
+            
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div [@routeAnimations]="prepareOutlet(outlet)">
+        <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+        
+</div>

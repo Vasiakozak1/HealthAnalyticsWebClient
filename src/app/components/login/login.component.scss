@@ -1,0 +1,48 @@
+.login-container {
+    .login-box {
+        border-radius: 5px;
+        margin-top: 10%;
+        margin-right: auto;
+        margin-left: auto;
+        width: 30%;
+        -webkit-box-shadow: 5px 6px 10px 0px rgba(0,0,0,0.45);
+        -moz-box-shadow: 5px 6px 10px 0px rgba(0,0,0,0.45);
+        box-shadow: 5px 6px 10px 0px rgba(0,0,0,0.45);
+        .inputs-group {
+            display: block;
+            padding: 10px;
+            mat-form-field {
+                width: 100%;
+            }
+            a {
+                width: 50%;
+                display: block;
+                margin-right: auto;
+                margin-left: auto;
+                margin-top: -15px;
+            }
+        }
+        .submit-group {
+            button {
+                display: block;
+                margin-right: auto;
+                margin-left: auto;
+                width: 90%;
+            }
+        }
+    }
+    .header, .footer {
+        background-color: rgb(245,245,245);
+        padding: 5px;
+        border-radius: 5px;
+    }
+    .footer {
+        margin-top: 10px;
+    }
+    .footer * {
+        text-align: center;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}

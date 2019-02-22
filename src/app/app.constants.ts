@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class AppConstants {
     public BaseUrl: string;
     public RegisterUrl: string;
-    public constructor(private httpClient: Http) {
+    public LoginUrl: string;
+    public constructor(private httpClient: HttpClient) {
         this.getSettings();
     }
 
     private getSettings() {
-        console.log('get sett');
-        this.httpClient.get('assets/settings.json')
+        this.httpClient.get<any>('assets/settings.json')
             .toPromise()
-            .then(settings => settings.json())
             .then(settingsJson => {
                 const apiUrlsNames = Object.keys(settingsJson.ApiUrls);
                 apiUrlsNames.forEach(element => {

@@ -25,7 +25,44 @@
         }
     }
     .register-submit {
-        width: 100%;
+        width: 50%;
         border-radius: 20px;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+.needs-email-confirm-container {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 40%;
+    margin-top: 5%;
+    -webkit-box-shadow: 5px 6px 10px 0px rgba(0,0,0,0.45);
+    -moz-box-shadow: 5px 6px 10px 0px rgba(0,0,0,0.45);
+    box-shadow: 5px 6px 10px 0px rgba(0,0,0,0.45);
+
+    .icons-container {
+        display: flex;
+        justify-content: center;
+        .email-icon {
+            color: gray;
+            font-size: 150px;
+            position: sticky;
+        }
+        .check {
+            width: 50px;
+            height: 50px;
+            transform: translate(-90%, 180%);
+            position: sticky;
+        }
+    }
+    .content {
+        padding: 5px;
+        span {
+            display: flex;
+            justify-content: center;
+        }
     }
 }

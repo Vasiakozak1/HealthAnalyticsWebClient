@@ -2,7 +2,8 @@
     "ApiUrls": {
         "BaseUrl": "http://localhost:61302/api/",
         "RegisterUrl": "Account/Register",
-        "LoginUrl": "Account/Login"
+        "LoginUrl": "Account/Login",
+        "ConfirmEmailUrl": "Account/VerifyEmail"
     }
     
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,6 +30,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MessageDialogComponent } from './components/dialogs/message-dialog/message-dialog.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.component';
 
 @NgModule({
   declarations: [
@@ -37,12 +39,14 @@ import { HomeComponent } from './components/home/home.component';
     ConfirmAccountComponent,
     MessageDialogComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ConfirmEmailComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
+    HttpModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,

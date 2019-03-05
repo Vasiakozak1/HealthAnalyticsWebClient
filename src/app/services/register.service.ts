@@ -16,12 +16,11 @@ export class RegisterService {
     , private dialogService: DialogService
     , private router: Router) { }
 
-  public Create(registerModel): Promise<MessageDialogData> {
+  public Create(registerModel): Promise<any> {
     return this.httpClient.post
                (this.constants.BaseUrl + this.constants.RegisterUrl
                , registerModel)
-               .toPromise()
-               .then((result: ServerMessage) => new MessageDialogData(result.title, result.subtitle, result.text));
+               .toPromise();
   }
 
   public ConfirmEmail(email: string, token: string) {

@@ -47,7 +47,6 @@ export class RegisterComponent implements OnInit {
     };
     this.registerService.Create(registerModel)
         .then((messageData) => {
-          this.dialogService.OpenMessageDialog(messageData);
           localStorage.setItem('registrated', 'true');
           this.Registrated = true;
         });

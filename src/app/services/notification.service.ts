@@ -10,8 +10,7 @@ export class NotificationService {
     public constructor(private dialog: MatDialog, private snackBar: MatSnackBar) {}
 
     public CheckIsResponseNotification(responseBody: any): boolean {
-        const serverMessage = responseBody as ServerMessage;
-        return serverMessage == null ? false : true;
+        return responseBody instanceof ServerMessage;
     }
     public ShowNotificationFrom(responseBody: any) {
         const serverMessage = responseBody as ServerMessage;

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 import { Subject } from 'rxjs';
 
 @Injectable()
@@ -16,18 +17,19 @@ export class AppConstants {
     public ConfirmEmailUrl: string;
 
     public SettingsLoaded: Subject<boolean>;
-    public constructor(private httpClient: HttpClient) {
+    public constructor(private httpClient: Http) {
         this.SettingsLoaded = new Subject<boolean>();
         this.getSettings();
     }
 
     private getSettings() {
-        this.httpClient.get<any>('assets/settings.json')
+        this.httpClient.get('assets/settings.json')
             .toPromise()
-            .then(settingsJson => {
-                const apiUrlsNames = Object.keys(settingsJson.ApiUrls);
+            .then(settings => {
+                const settingsjson = settings.json();
+                const apiUrlsNames = Object.keys(settingsjson.ApiUrls);
                 apiUrlsNames.forEach(element => {
-                    this[element] = settingsJson.ApiUrls[element];
+                    this[element] = settingsjson.ApiUrls[element];
                 });
             })
             .then(() => this.SettingsLoaded.next(true));

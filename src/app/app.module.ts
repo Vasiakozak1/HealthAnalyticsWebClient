@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -50,6 +51,7 @@ import { AppHttpInterceptor } from './app.http.interceptor';
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
+    HttpModule,
     AppRoutingModule,
     BrowserAnimationsModule,
 
@@ -76,11 +78,11 @@ import { AppHttpInterceptor } from './app.http.interceptor';
     UserService,
     { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
     { provide: MAT_DATE_LOCALE, useValue: 'uk' },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AppHttpInterceptor,
-      multi: true
-    }
+     {
+       provide: HTTP_INTERCEPTORS,
+       useClass: AppHttpInterceptor,
+       multi: true
+     }
   ],
   bootstrap: [AppComponent]
 })

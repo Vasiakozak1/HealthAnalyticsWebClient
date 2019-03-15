@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MessageDialogData } from 'src/app/models/messagedialogdata.model';
+import { MessageDialogData } from '../../../models/messagedialogdata.model';
 import { MAT_SNACK_BAR_DATA } from '@angular/material';
 
 @Component({

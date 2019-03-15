@@ -1,0 +1,18 @@
+{
+    "extends": "../tsconfig.json",
+    "angularCompilerOptions": {
+        "entryModule": "./app/appserver.module#AppServerModule"
+    },
+    "compilerOptions": {
+        "outDir": "../dist/HealthAnalyticsServer",
+        "baseUrl": "./",
+        "module": "commonjs",
+        "types": [
+            "node"
+        ]
+    },
+    "exclude": [
+        "test.ts",
+        "**/*.spec.ts"
+    ]
+}

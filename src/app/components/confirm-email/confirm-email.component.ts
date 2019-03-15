@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RegisterService } from 'src/app/services/register.service';
+import { RegisterService } from '../../services/register.service';
 
 @Component({
   templateUrl: './confirm-email.component.html',

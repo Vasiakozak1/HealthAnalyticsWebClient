@@ -11,6 +11,8 @@ export class AppConstants {
     public static EmailKey = 'email';
     public static AuthTokenKey = 'authToken';
 
+    public static ClientUrl = typeof window === 'undefined' ? 'http://localhost:4000' : 'http://' + window.location.host;
+
     public BaseUrl: string;
     public RegisterUrl: string;
     public LoginUrl: string;
@@ -23,7 +25,7 @@ export class AppConstants {
     }
 
     private getSettings() {
-        this.httpClient.get('assets/settings.json')
+        this.httpClient.get(AppConstants.ClientUrl + '/assets/settings.json')
             .toPromise()
             .then(settings => {
                 const settingsjson = settings.json();

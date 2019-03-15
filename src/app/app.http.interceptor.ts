@@ -1,10 +1,11 @@
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { UserService } from './services/user.service';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { NotificationService } from './services/notification.service';
 import { Injectable } from '@angular/core';
 import { MessageDialogData } from './models/messagedialogdata.model';
 import { MessageType } from './models/servermessage';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class AppHttpInterceptor implements HttpInterceptor {
@@ -12,32 +13,33 @@ export class AppHttpInterceptor implements HttpInterceptor {
                 private notificationService: NotificationService) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        let requestHandler;
-        if (request.url.startsWith('http')) {
-            requestHandler = next.handle(this.addAuthHeader(request));
-            requestHandler.subscribe(response => {
+
+        request = this.addAuthHeader(request);
+
+        return next.handle(request).pipe(
+            map((response: HttpResponse<any>) => {
                 this.handleHttpResponse(response);
-            });
-        } else {
-            requestHandler = next.handle(request);
-        }
-        return requestHandler;
+                return response;
+            }), catchError(err => {
+                this.handleErrorResponse(err);
+                return of(err);
+            }));
     }
 
     private addAuthHeader(request: HttpRequest<any>): HttpRequest<any> {
         return request.clone({setHeaders: {Authorization: 'Bearer ' + this.userService.GetUserToken()}});
     }
 
-    private handleHttpResponse(response: any) {
+    private handleHttpResponse(response: HttpResponse<any>) {
         const needsNotification = this.notificationService.CheckIsResponseNotification(response.body);
-        console.log(response);
         if (needsNotification) {
             this.notificationService.ShowNotificationFrom(response.body);
         }
-        if (response.error) {
-            const messageData = new MessageDialogData(response.statusText, '', response.error);
-            this.notificationService.ShowNotification(messageData, MessageType.Dialog);
-        }
+    }
+
+    private handleErrorResponse(errorResponse: HttpErrorResponse) {
+        const messageData = new MessageDialogData(errorResponse.statusText, '', errorResponse.error);
+        this.notificationService.ShowNotification(messageData, MessageType.Dialog);
     }
 
 }

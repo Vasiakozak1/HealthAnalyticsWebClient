@@ -48,7 +48,7 @@ import { AppHttpInterceptor } from './app.http.interceptor';
     MessageSnackbarComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'ha-app'}),
     ReactiveFormsModule,
     HttpClientModule,
     HttpModule,

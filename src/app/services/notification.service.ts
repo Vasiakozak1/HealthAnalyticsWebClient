@@ -10,7 +10,7 @@ export class NotificationService {
     public constructor(private dialog: MatDialog, private snackBar: MatSnackBar) {}
 
     public CheckIsResponseNotification(responseBody: any): boolean {
-        return responseBody instanceof ServerMessage;
+        return responseBody && responseBody.messageType && responseBody.text && responseBody.title;
     }
     public ShowNotificationFrom(responseBody: any) {
         const serverMessage = responseBody as ServerMessage;
@@ -24,7 +24,8 @@ export class NotificationService {
             dialogRef.afterClosed();
 
         } else if (messageType === MessageType.Toast) {
-            this.snackBar.openFromComponent(MessageSnackbarComponent, {data: messageData, duration: 3000});
+            this.snackBar.openFromComponent(MessageSnackbarComponent
+                , {data: messageData, duration: 3000, panelClass: 'healhth-app-notify-dialog'});
         }
     }
 }
